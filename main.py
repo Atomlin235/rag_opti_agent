@@ -7,7 +7,8 @@ import streamlit as st
 
 load_dotenv()
 
-APPLICATION_TOKEN = os.environ.get("APP_TOKEN")
+
+secret = st.secrets["APP_TOKEN"]
 
 def run_flow(message:str) -> dict:
 # The complete API endpoint URL for this flow
@@ -23,7 +24,7 @@ def run_flow(message:str) -> dict:
     # Request headers
     headers = {
         "Content-Type": "application/json",
-        "Authorization":f"Bearer {APPLICATION_TOKEN}"  # Authentication key from environment variable'}
+        "Authorization":f"Bearer {secret}"  # Authentication key from environment variable'}
     }
 
     try:
